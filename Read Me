@@ -214,9 +214,14 @@ I also like this idea because there are many ways the software could grow. A bas
 
 This makes Expiration Tracker a project that could start small and become more advanced as new features are developed.
 
+Technologies Used: Expiration Tracker was developed using React.js for the frontend, Node.js and Express.js for the backend, and MongoDB for database management. Authentication was implemented using JWT, while barcode scanning and OCR technology were used to simplify item entry. Firebase Cloud Messaging was used to provide expiration and renewal notifications. Git and GitHub were used for version control and project management.
+
+
 Conclusion
 Overall, Expiration Tracker would be an application designed to help people stay organized and avoid forgetting important dates. Users could store information about food, medicine, cosmetics, subscriptions, warranties, documents, memberships, and other items in one place.
 
 The software would provide automatic notifications, categories, search tools, barcode scanning, and an easy-to-use dashboard. Its main goals would be to reduce waste, save money, improve organization, and make everyday life easier.
 
 I believe Expiration Tracker would be a useful piece of software because it addresses a common problem in a simple and practical way. Instead of expecting people to remember dozens of different dates, the application would do the remembering for them. With additional features and improvements in the future, Expiration Tracker could become a helpful everyday tool for individuals, families, students, and businesses.
+
+
