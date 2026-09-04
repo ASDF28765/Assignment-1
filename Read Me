@@ -1,1 +1,222 @@
+Expiration Tracker
 
+Introduction
+The software I would like to create is called Expiration Tracker. Expiration Tracker would be a simple but useful application designed to help people keep track of items that have expiration dates, renewal dates, or deadlines. In everyday life, people have to remember many different dates. Food expires, medications have expiration dates, cosmetics and personal-care products can become unsafe or unusable over time, subscriptions renew, warranties end, and important documents need to be renewed. Because people are busy, it is very easy to forget about these dates.
+
+The main purpose of Expiration Tracker would be to make remembering these dates easier. Instead of writing expiration dates on pieces of paper, putting reminders in different calendar apps, or simply trying to remember everything, users would be able to keep all of their expiration information in one organized application. The software would notify users before something expires so they have enough time to use, replace, renew, or take care of it.
+
+The Problem
+One of the biggest problems Expiration Tracker would solve is forgetfulness. People purchase many products throughout the year, but they do not always remember when they purchased them or when they expire. This is especially common with products that are not used every day.
+
+For example, someone might buy a large package of food and put it in the back of their refrigerator. A few weeks later, they may discover that it has already expired. Another person might purchase a subscription and forget that it automatically renews every month. Someone else might have a warranty on an electronic device but forget when the warranty ends.
+
+These situations can result in wasted money, unnecessary purchases, missed opportunities, and inconvenience. In some cases, forgetting an expiration date can even create safety concerns, particularly when dealing with certain products that should not be used after their expiration date.
+
+Expiration Tracker would provide users with a central location where they can store these dates and receive reminders automatically.
+
+How the Software Would Work
+When a user first opens Expiration Tracker, they would create an account or choose to use the application without an account if that option is available. The user could then begin adding items to their tracker.
+
+To add an item, the user could enter information such as:
+
+Item name
+Expiration or renewal date
+Category
+Quantity
+Date purchased
+Location where it is stored
+Optional notes
+Optional photo
+For example, a user could add an item called “Milk”, select the Food category, and enter its expiration date. The application would then save the information and display it on the user's dashboard.
+
+The user could also add something such as a phone warranty. Instead of an expiration date for a physical product, the user could enter the date when the warranty ends. Expiration Tracker would treat the date as a deadline and remind the user before it arrives.
+
+Barcode Scanning
+One feature I would like to include is barcode scanning. Instead of manually entering every piece of information, users could scan the barcode on a product using their phone's camera.
+
+After scanning the barcode, the application could identify the product and automatically fill in information such as the product name and category when that information is available. The user would then only need to enter or confirm the expiration date.
+
+This would make the application much faster to use, especially when someone is adding many products at once.
+
+For products that do not have barcodes, users could still enter the information manually.
+
+Photo Recognition
+Another feature could allow users to take a picture of an expiration date printed on a product. The software could use text recognition to read the date from the image.
+
+For example, if a package has an expiration date printed on it, the user could take a picture instead of typing the date manually. The application would attempt to recognize the date and ask the user to confirm that it is correct.
+
+This feature would make Expiration Tracker more convenient and could reduce typing mistakes.
+
+Automatic Notifications
+Notifications would be one of the most important parts of Expiration Tracker.
+
+The application would notify users when an item is approaching its expiration date. Users could choose how early they want to receive notifications.
+
+For example, they could choose to receive reminders:
+
+30 days before expiration
+14 days before expiration
+7 days before expiration
+3 days before expiration
+1 day before expiration
+Users could also customize reminders for different categories. A person might want a reminder about a subscription 7 days before renewal but want to know about a document several months before it expires.
+
+The software could also provide a daily summary. For example, when a user opens the application, they might see a message saying that three items expire this week and one subscription renews next week.
+
+Categories
+Expiration Tracker would organize items into different categories. This would make it easier for users to find specific information.
+
+Possible categories could include:
+
+Food
+Medicine
+Cosmetics
+Personal care
+Household products
+Subscriptions
+Warranties
+Documents
+Memberships
+Gift cards
+Other
+Users could also create their own categories if they have a specific need.
+
+For example, a student could create a category called School for deadlines related to memberships, permits, or other important dates. A business owner could create categories for equipment warranties, licenses, and contracts.
+
+
+Dashboard
+The application would have a main dashboard that gives users a quick overview of their items.
+
+The dashboard could display sections such as:
+
+Expiring Today
+Items that expire or require attention today.
+
+Expiring This Week
+Items that will expire within the next seven days.
+
+Expiring This Month
+Items that will expire later in the month.
+
+Recently Added
+Items that the user has recently entered.
+
+Renewals Coming Up
+Subscriptions, memberships, warranties, or documents that need attention.
+
+The dashboard could use different colors to make the information easier to understand. For example, green could represent items that are not expiring soon, yellow could represent items that need attention soon, and red could represent items that are already expired or require immediate attention.
+
+Search and Filters
+If a user has hundreds of items stored in the application, finding something manually could become difficult. For this reason, Expiration Tracker would include a search function.
+
+Users could search for an item by name. They could also filter their items by category, expiration date, or status.
+
+For example, a user could search for “food” and see all of their tracked food products. They could then sort them by expiration date so that the items expiring soonest appear first.
+
+The user could also search for a specific product and immediately see when it expires.
+
+Reducing Food Waste
+One of the major benefits of Expiration Tracker would be reducing food waste.
+
+People throw away large amounts of food because they forget about products they already have. Sometimes they purchase something new even though they already have a similar item at home.
+
+Expiration Tracker could help users notice products before they expire. Instead of discovering an expired product after it is too late, the user could receive a reminder several days earlier.
+
+The application could potentially include a “Use Soon” section that shows food products approaching their expiration dates. In a future version, the software could even suggest recipes based on ingredients that need to be used soon.
+
+For example, if a user has eggs, vegetables, and cheese that are approaching their dates, the application could suggest meals that use those ingredients.
+
+Saving Money
+Expiration Tracker could also help users save money.
+
+When people forget about subscriptions, they may continue paying for services they no longer use. By reminding users about upcoming renewals, the application could give them time to cancel unnecessary subscriptions.
+
+The same idea could apply to warranties and memberships. If a warranty is about to expire, the user could be reminded to check whether their product needs repairs before the warranty ends.
+
+The application could therefore help users make better decisions about how they spend their money.
+
+Expired Items
+Expiration Tracker would also keep track of items that have already expired.
+
+Instead of immediately deleting expired items, the application could move them into an Expired section. Users could then review the list and remove items after they have been checked.
+
+This could be useful because it gives users a history of what they were tracking.
+
+However, the software would not tell users that an expired item is automatically safe or unsafe to use. For products where expiration has safety implications, the app would simply remind users to check the product's instructions and appropriate guidance.
+
+Custom Reminders
+Different people have different needs, so users would be able to customize their reminders.
+
+For example, one person might want a reminder one day before an item expires, while another person might want a reminder one month before.
+
+Users could also choose whether notifications appear on their phone, through email, or inside the application, depending on the features supported by the final version.
+
+The goal would be to give users control rather than forcing everyone to use the same reminder system.
+
+User Interface
+I would want Expiration Tracker to have a clean and simple design. The application should not feel complicated because its main purpose is to make life easier.
+
+The home screen could contain large buttons for features such as:
+
+Add Item
+View Expiring Items
+Categories
+Search
+Settings
+
+Each item could be displayed as a card showing its name, category, and expiration date.
+
+The design could also use simple icons and colors so users can understand information quickly without reading a lot of text.
+
+Security and Privacy
+Because users may store personal information in the application, privacy and security would be important.
+
+The software should protect user accounts with secure authentication and protect stored information appropriately. Users should also be able to delete their information if they no longer want to use the application.
+
+If the software uses cloud storage, information should be transmitted and stored securely.
+
+The application should only collect information that is necessary for its features. Users should be able to understand what information the application stores and why.
+
+Target Users
+Expiration Tracker could be useful for many different types of people.
+
+Students could use it to remember subscriptions, documents, memberships, and other deadlines.
+
+Families could use it to track food and household products.
+
+Older adults could use it as a reminder system for important dates and products, with an interface designed to be easy to read.
+
+People who live alone could use it to keep track of food and household items without having to remember everything themselves.
+
+Small businesses could use a more advanced version to track equipment warranties, licenses, contracts, and other important dates.
+
+Because the software would be flexible, it could be useful for both individuals and organizations.
+
+Future Features
+If Expiration Tracker became successful, I would add more features over time.
+
+One possible feature would be smart shopping lists. If the application notices that a product has expired, it could allow the user to add a replacement to their shopping list.
+
+Another feature could be recipe suggestions for food that is approaching its expiration date.
+
+The application could also include shared accounts, allowing family members or roommates to manage the same list. For example, one person could add groceries while another person checks which items need to be used.
+
+Another possible feature would be a calendar view where users could see all upcoming expiration and renewal dates in one calendar.
+
+In the future, the application could also connect with smart refrigerators or other home devices to automatically track certain products.
+
+Why I Would Choose This Idea
+I would choose Expiration Tracker because it solves a real-world problem that many people experience. Forgetting expiration dates may seem like a small problem, but it can lead to wasted food, wasted money, and missed deadlines.
+
+The software would also be useful without being overly complicated. Its main purpose is simple: help people remember important expiration and renewal dates.
+
+I also like this idea because there are many ways the software could grow. A basic version could simply allow users to enter items and receive reminders. A more advanced version could include barcode scanning, image recognition, recipe recommendations, shared accounts, shopping lists, and smart-home integration.
+
+This makes Expiration Tracker a project that could start small and become more advanced as new features are developed.
+
+Conclusion
+Overall, Expiration Tracker would be an application designed to help people stay organized and avoid forgetting important dates. Users could store information about food, medicine, cosmetics, subscriptions, warranties, documents, memberships, and other items in one place.
+
+The software would provide automatic notifications, categories, search tools, barcode scanning, and an easy-to-use dashboard. Its main goals would be to reduce waste, save money, improve organization, and make everyday life easier.
+
+I believe Expiration Tracker would be a useful piece of software because it addresses a common problem in a simple and practical way. Instead of expecting people to remember dozens of different dates, the application would do the remembering for them. With additional features and improvements in the future, Expiration Tracker could become a helpful everyday tool for individuals, families, students, and businesses.
