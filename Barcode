@@ -1,116 +1,484 @@
 
-import React, { useState } from "react";
+import java.util.*;
+import java.time.LocalDate;
 
-function App() {
-  const [items, setItems] = useState([]);
-  const [itemName, setItemName] = useState("");
-  const [expirationDate, setExpirationDate] = useState("");
+public class Main {
 
-  // Add a new item
-  const addItem = () => {
-    if (itemName.trim() === "" || expirationDate === "") {
-      alert("Please enter an item name and expiration date.");
-      return;
+    static Scanner input = new Scanner(System.in);
+    static HashMap<String, User> users = new HashMap<>();
+    static User currentUser;
+
+    static class User {
+        String username;
+        String password;
+        ArrayList<Item> items = new ArrayList<>();
+        int reminderDays = 7;
+
+        User(String username, String password) {
+            this.username = username;
+            this.password = password;
+        }
     }
 
-    const newItem = {
-      id: Date.now(),
-      name: itemName,
-      date: expirationDate
-    };
+    static class Item {
+        String name;
+        String category;
+        LocalDate expirationDate;
+        String purchaseDate;
+        int quantity;
+        String location;
+        String notes;
+        String barcode;
+        String photo;
 
-    setItems((oldItems) => [...oldItems, newItem]);
+        Item(String name, String category, LocalDate expirationDate,
+             String purchaseDate, int quantity, String location,
+             String notes, String barcode, String photo) {
 
-    setItemName("");
-    setExpirationDate("");
+            this.name = name;
+            this.category = category;
+            this.expirationDate = expirationDate;
+            this.purchaseDate = purchaseDate;
+            this.quantity = quantity;
+            this.location = location;
+            this.notes = notes;
+            this.barcode = barcode;
+            this.photo = photo;
+        }
+    }
 
-    alert("Item added successfully!");
-  };
+    public static void main(String[] args) {
 
-  // Delete an item
-  const deleteItem = (id) => {
-    setItems((oldItems) =>
-      oldItems.filter((item) => item.id !== id)
-    );
-  };
+        System.out.println("================================");
+        System.out.println("       EXPIRATION TRACKER");
+        System.out.println("================================");
 
-  return (
-    <div style={{
-      padding: "30px",
-      fontFamily: "Arial",
-      maxWidth: "600px",
-      margin: "auto"
-    }}>
+        while (true) {
+            System.out.println("\n1. Create Account");
+            System.out.println("2. Login");
+            System.out.println("3. Exit");
 
-      <h1>Expiration Tracker</h1>
+            int choice = readInt("Choose an option: ");
 
-      <p>Keep track of your important expiration dates.</p>
+            switch (choice) {
+                case 1:
+                    createAccount();
+                    break;
+                case 2:
+                    if (login()) {
+                        mainMenu();
+                    }
+                    break;
+                case 3:
+                    System.out.println("Thank you for using Expiration Tracker!");
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
 
-      <h2>Add New Item</h2>
+    // CREATE ACCOUNT
+    static void createAccount() {
 
-      <input
-        type="text"
-        placeholder="Enter item name"
-        value={itemName}
-        onChange={(e) => setItemName(e.target.value)}
-        style={{ padding: "10px", margin: "5px" }}
-      />
+        System.out.print("Create username: ");
+        String username = input.nextLine();
 
-      <br />
+        if (users.containsKey(username)) {
+            System.out.println("Username already exists.");
+            return;
+        }
 
-      <input
-        type="date"
-        value={expirationDate}
-        onChange={(e) => setExpirationDate(e.target.value)}
-        style={{ padding: "10px", margin: "5px" }}
-      />
+        System.out.print("Create password: ");
+        String password = input.nextLine();
 
-      <br />
+        users.put(username, new User(username, password));
 
-      <button
-        type="button"
-        onClick={addItem}
-        style={{
-          padding: "10px 20px",
-          margin: "10px 5px",
-          cursor: "pointer"
-        }}
-      >
-        Add Item
-      </button>
+        System.out.println("Account created successfully!");
+    }
 
-      <hr />
+    // LOGIN
+    static boolean login() {
 
-      <h2>My Items ({items.length})</h2>
+        System.out.print("Username: ");
+        String username = input.nextLine();
 
-      {items.length === 0 ? (
-        <p>No items added yet.</p>
-      ) : (
-        items.map((item) => (
-          <div
-            key={item.id}
-            style={{
-              border: "1px solid gray",
-              padding: "12px",
-              marginBottom: "10px"
-            }}
-          >
-            <h3>{item.name}</h3>
+        System.out.print("Password: ");
+        String password = input.nextLine();
 
-            <p>Expiration Date: {item.date}</p>
+        User user = users.get(username);
 
-            <button
-              type="button"
-              onClick={() => deleteItem(item.id)}
-            >
-              Delete
-            </button>
-          </div>
-        ))
-      )}
+        if (user != null && user.password.equals(password)) {
+            currentUser = user;
+            System.out.println("Login successful!");
+            return true;
+        }
 
-    </div>
-  );
+        System.out.println("Incorrect username or password.");
+        return false;
+    }
+
+    // MAIN MENU
+    static void mainMenu() {
+
+        while (true) {
+
+            System.out.println("\n===== MAIN MENU =====");
+            System.out.println("1. Add Item");
+            System.out.println("2. View All Items");
+            System.out.println("3. Edit Item");
+            System.out.println("4. Delete Item");
+            System.out.println("5. Search Items");
+            System.out.println("6. Filter by Category");
+            System.out.println("7. View Expiring Soon");
+            System.out.println("8. View Expired Items");
+            System.out.println("9. Set Reminder");
+            System.out.println("10. Check Notifications");
+            System.out.println("11. Logout");
+
+            int choice = readInt("Choose an option: ");
+
+            switch (choice) {
+                case 1:
+                    addItem();
+                    break;
+                case 2:
+                    viewItems();
+                    break;
+                case 3:
+                    editItem();
+                    break;
+                case 4:
+                    deleteItem();
+                    break;
+                case 5:
+                    searchItems();
+                    break;
+                case 6:
+                    filterCategory();
+                    break;
+                case 7:
+                    expiringSoon();
+                    break;
+                case 8:
+                    expiredItems();
+                    break;
+                case 9:
+                    setReminder();
+                    break;
+                case 10:
+                    checkNotifications();
+                    break;
+                case 11:
+                    currentUser = null;
+                    System.out.println("Logged out successfully.");
+                    return;
+                default:
+                    System.out.println("Invalid choice.");
+            }
+        }
+    }
+
+    // ADD ITEM
+    static void addItem() {
+
+        System.out.println("\n===== ADD NEW ITEM =====");
+
+        System.out.print("Item name: ");
+        String name = input.nextLine();
+
+        System.out.print("Category: ");
+        String category = input.nextLine();
+
+        LocalDate expiration = readDate("Expiration date (YYYY-MM-DD): ");
+
+        System.out.print("Purchase date (YYYY-MM-DD or blank): ");
+        String purchase = input.nextLine();
+
+        int quantity = readInt("Quantity: ");
+
+        System.out.print("Storage location: ");
+        String location = input.nextLine();
+
+        System.out.print("Notes: ");
+        String notes = input.nextLine();
+
+        System.out.print("Barcode (optional): ");
+        String barcode = input.nextLine();
+
+        System.out.print("Photo file path (optional): ");
+        String photo = input.nextLine();
+
+        Item item = new Item(
+            name, category, expiration, purchase,
+            quantity, location, notes, barcode, photo
+        );
+
+        currentUser.items.add(item);
+
+        System.out.println("Item added successfully!");
+    }
+
+    // VIEW ITEMS
+    static void viewItems() {
+
+        System.out.println("\n===== MY ITEMS =====");
+
+        if (currentUser.items.isEmpty()) {
+            System.out.println("No items found.");
+            return;
+        }
+
+        for (int i = 0; i < currentUser.items.size(); i++) {
+            displayItem(i);
+        }
+    }
+
+    // DISPLAY ONE ITEM
+    static void displayItem(int index) {
+
+        Item item = currentUser.items.get(index);
+
+        System.out.println("\nItem Number: " + (index + 1));
+        System.out.println("Name: " + item.name);
+        System.out.println("Category: " + item.category);
+        System.out.println("Expiration: " + item.expirationDate);
+        System.out.println("Purchase Date: " + item.purchaseDate);
+        System.out.println("Quantity: " + item.quantity);
+        System.out.println("Location: " + item.location);
+        System.out.println("Notes: " + item.notes);
+        System.out.println("Barcode: " + item.barcode);
+        System.out.println("Photo: " + item.photo);
+
+        if (item.expirationDate.isBefore(LocalDate.now())) {
+            System.out.println("Status: EXPIRED");
+        } else if (!item.expirationDate.isAfter(LocalDate.now()
+                .plusDays(currentUser.reminderDays))) {
+            System.out.println("Status: EXPIRING SOON");
+        } else {
+            System.out.println("Status: ACTIVE");
+        }
+    }
+
+    // EDIT ITEM
+    static void editItem() {
+
+        viewItems();
+
+        if (currentUser.items.isEmpty()) return;
+
+        int number = readInt("\nEnter item number to edit: ");
+
+        if (number < 1 || number > currentUser.items.size()) {
+            System.out.println("Invalid item number.");
+            return;
+        }
+
+        Item item = currentUser.items.get(number - 1);
+
+        System.out.print("New item name (blank to keep): ");
+        String name = input.nextLine();
+        if (!name.trim().isEmpty()) item.name = name;
+
+        System.out.print("New category (blank to keep): ");
+        String category = input.nextLine();
+        if (!category.trim().isEmpty()) item.category = category;
+
+        System.out.print("New expiration date (YYYY-MM-DD or blank): ");
+        String date = input.nextLine();
+
+        if (!date.trim().isEmpty()) {
+            try {
+                item.expirationDate = LocalDate.parse(date);
+            } catch (Exception e) {
+                System.out.println("Invalid date. Date unchanged.");
+            }
+        }
+
+        System.out.println("Item updated successfully!");
+    }
+
+    // DELETE ITEM
+    static void deleteItem() {
+
+        viewItems();
+
+        if (currentUser.items.isEmpty()) return;
+
+        int number = readInt("\nEnter item number to delete: ");
+
+        if (number >= 1 && number <= currentUser.items.size()) {
+            currentUser.items.remove(number - 1);
+            System.out.println("Item deleted successfully!");
+        } else {
+            System.out.println("Invalid item number.");
+        }
+    }
+
+    // SEARCH ITEMS
+    static void searchItems() {
+
+        System.out.print("Enter item name to search: ");
+        String search = input.nextLine().toLowerCase();
+
+        boolean found = false;
+
+        for (int i = 0; i < currentUser.items.size(); i++) {
+
+            Item item = currentUser.items.get(i);
+
+            if (item.name.toLowerCase().contains(search)) {
+                displayItem(i);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No matching items found.");
+        }
+    }
+
+    // FILTER BY CATEGORY
+    static void filterCategory() {
+
+        System.out.print("Enter category: ");
+        String category = input.nextLine();
+
+        boolean found = false;
+
+        for (int i = 0; i < currentUser.items.size(); i++) {
+
+            Item item = currentUser.items.get(i);
+
+            if (item.category.equalsIgnoreCase(category)) {
+                displayItem(i);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No items in this category.");
+        }
+    }
+
+    // EXPIRING SOON
+    static void expiringSoon() {
+
+        System.out.println("\n===== EXPIRING SOON =====");
+
+        boolean found = false;
+
+        for (int i = 0; i < currentUser.items.size(); i++) {
+
+            Item item = currentUser.items.get(i);
+
+            if (!item.expirationDate.isBefore(LocalDate.now())
+                && !item.expirationDate.isAfter(
+                    LocalDate.now().plusDays(currentUser.reminderDays))) {
+
+                displayItem(i);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No items expiring soon.");
+        }
+    }
+
+    // EXPIRED ITEMS
+    static void expiredItems() {
+
+        System.out.println("\n===== EXPIRED ITEMS =====");
+
+        boolean found = false;
+
+        for (int i = 0; i < currentUser.items.size(); i++) {
+
+            Item item = currentUser.items.get(i);
+
+            if (item.expirationDate.isBefore(LocalDate.now())) {
+                displayItem(i);
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No expired items.");
+        }
+    }
+
+    // CUSTOMIZE REMINDER
+    static void setReminder() {
+
+        int days = readInt("Remind me how many days before expiration? ");
+
+        if (days < 0) {
+            System.out.println("Please enter zero or a positive number.");
+            return;
+        }
+
+        currentUser.reminderDays = days;
+
+        System.out.println("Reminder updated to " + days + " days.");
+    }
+
+    // CHECK NOTIFICATIONS
+    static void checkNotifications() {
+
+        System.out.println("\n===== EXPIRATION NOTIFICATIONS =====");
+
+        boolean found = false;
+
+        for (Item item : currentUser.items) {
+
+            if (item.expirationDate.isBefore(LocalDate.now())) {
+
+                System.out.println(item.name + " has expired!");
+
+                found = true;
+
+            } else if (!item.expirationDate.isAfter(
+                    LocalDate.now().plusDays(currentUser.reminderDays))) {
+
+                System.out.println(item.name +
+                    " is expiring on " + item.expirationDate);
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            System.out.println("No expiration reminders at this time.");
+        }
+    }
+
+    // READ INTEGER SAFELY
+    static int readInt(String message) {
+
+        while (true) {
+            System.out.print(message);
+
+            try {
+                int number = Integer.parseInt(input.nextLine());
+                return number;
+            } catch (NumberFormatException e) {
+                System.out.println("Please enter a valid number.");
+            }
+        }
+    }
+
+    // READ DATE SAFELY
+    static LocalDate readDate(String message) {
+
+        while (true) {
+            System.out.print(message);
+
+            try {
+                return LocalDate.parse(input.nextLine());
+            } catch (Exception e) {
+                System.out.println("Invalid date. Use YYYY-MM-DD.");
+            }
+        }
+    }
 }
-
-export default App;
